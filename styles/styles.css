@@ -124,6 +124,15 @@ body {
   align-items: center;
 }
 
+.clear-equals-buttons{
+    width: 100%;
+    height: 20%;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .button-label{
   margin-bottom: 2px;
   margin-right: 2px;

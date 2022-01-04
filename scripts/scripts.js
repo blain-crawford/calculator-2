@@ -1,4 +1,5 @@
 //DOM element and Global Variable creation
+const clearButton = document.querySelector('#clear')
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const equationText = document.querySelector('#running-equation');
@@ -8,6 +9,24 @@ let equationArray = [];
 let tempNumber = '';
 
 
+//mathWork functionality
+const mathWork = function(opperand1, operator, opperand2){
+
+
+  if(operator === '+') {
+   return opperand1 + opperand2;
+  } else if (operator === '-') {
+    return opperand1 - opperand2;
+  } else if (operator === '*') {
+    return opperand1 * opperand2;
+  } else if (operator === '/'){
+    return opperand1 / opperand2;
+  } else if(operator === '**'){
+    return opperand1 ** 2;
+  }
+
+}
+
 //functionality for number buttons
 const numberInput = function () {
   if(this.id === '.' && tempNumber.includes('.') && equationText.textContent.includes('.')){
@@ -16,52 +35,76 @@ const numberInput = function () {
     tempNumber += this.id;
     equationText.textContent += this.id;
   }
-  // if(parseInt(this.id) >= 0 && parseInt(this.id) <= 9) {
-  //   equationText.textContent += this.id;
-  //   numberInput += this.id;
-  // } else if (this.id === 'clear') {
-  //   equationText.textContent = ''
-  //   solutionText.textContent = ''
-  //   numberInput = '';
-  //   while (equationArray.length > 0){
-  //     equationArray.pop();
-  //   }
-
-  // } else if (this.id === '+' || this.id === '-' || this.id ==='*' || this.id ==='/') {
-  //   equationArray.push(numberInput);
-  //   equationArray.push(this.id);
-  //   numberInput = '';
-  //   equationText.textContent += ` ${this.id} `;
-
-    
-  // }
-  // console.log(equationArray);
-  // console.log(numberInput);
-  console.log(this.id);
   console.log(tempNumber);
 };
 
-const addOperator = function(){
+//Adding functionality for clear Button
+const clearCalculator = function() {
   if(this.id === 'clear'){
       runningSolution = '';
       equationArray = [];
       tempNumber = '';
-      equationText.textContent = ''
+      equationText.textContent = '';
+      solutionText.textContent = '';
   } 
-  if (equationArray.indexOf(this.id) === -1 && equationArray.length > 0 && this.id === '+' || this.id === '-' || this.id === '*' || this.id === '/'){
-    equationText.textContent += ` ${this.id} `;
-    equationArray.push(tempNumber);
+};
+
+
+//Add operator functionality
+let addInitialOperator = function() {
+  if(equationArray.length === 2 && tempNumber === ''){
+    if(equationArray[1] === this.id){
+      return;
+    } else {
+      equationArray.pop();
+      equationArray.push(this.id);
+      equationText.textContent = `${equationArray[0]} ${this.id} `
+    }
+    return;
+  }
+  
+  if(equationArray.length >= 1) {
+    equationArray.push(parseInt(tempNumber));
+    tempNumber = '';
+    let mySolution = mathWork(equationArray[0], equationArray[1], equationArray[2]);
+    if(!Number.isInteger(mySolution)){
+      mySolution = mySolution.toFixed(10);
+    }
+    equationArray = [];
+    equationArray.push(mySolution);
+    equationArray.push(this.id)
+    runningSolution = mySolution;
+    solutionText.textContent = mySolution;
+    equationText.textContent = `${mySolution} ${this.id} `;
+
+  }
+
+  if(tempNumber.length > 0 && equationArray.length === 0){
+    equationArray.push(parseInt(tempNumber));
     equationArray.push(this.id);
     tempNumber = '';
+    equationText.textContent += ` ${this.id} `
+  }
 
-        
-    }
-  console.log(tempNumber);
+  if(equationArray[0] === 'NaN'){
+    equationText.textContent = '';
+    solutionText.textContent = '';
+    equationText.textContent = 'ERROR PLEASE CLEAR'
+  }
+
+
   console.log(equationArray);
-};
+}
+
+
+
+
 
 //adding functionality to number buttons
 numberButtons.forEach(button => button.addEventListener('click', numberInput));
 
 //adding operator button functionality
-operatorButtons.forEach(button => button.addEventListener('click', addOperator));
+operatorButtons.forEach(button => button.addEventListener('click', addInitialOperator));
+
+//adding functionality to clear button
+clearButton.addEventListener('click', clearCalculator);
