@@ -6,6 +6,7 @@ const equationText = document.querySelector("#running-equation");
 const equalsButton = document.getElementById("=");
 const solutionText = document.querySelector("#solution");
 const squareRootButton = document.getElementById("√");
+const squaredButton = document.getElementById('**')
 let runningSolution = "";
 let equationArray = [];
 let tempNumber = "";
@@ -34,6 +35,13 @@ const mathWork = function (opperand1, operator, opperand2) {
 
 //functionality for number buttons
 const numberInput = function () {
+  if(equationArray.length === 1 && tempNumber === ''){
+    equationArray = [];
+    equationText.textContent = '';
+    console.log(tempNumber);
+    console.log(equationArray);
+  }
+  
   if (
     this.id === "." &&
     tempNumber.includes(".") &&
@@ -43,8 +51,9 @@ const numberInput = function () {
   } else {
     tempNumber += this.id;
     equationText.textContent += this.id;
+    console.log(tempNumber);
   }
-  console.log(tempNumber);
+
 };
 
 //Adding functionality for clear button
@@ -64,11 +73,11 @@ let squareRoot = function () {
     return;
   } else if (equationArray.length === 2 && tempNumber !== "") {
     equationArray.push(generateNumber(tempNumber))
-    let mySolution = mathWork(
+    let mySolution = Math.sqrt(mathWork(
       equationArray[0],
       equationArray[1],
       equationArray[2]
-    );
+    ));
     equationArray = [];
     equationArray.push(mySolution);
     runningSolution = mySolution;
@@ -77,11 +86,13 @@ let squareRoot = function () {
     tempNumber = "";
     console.log(equationArray);
   } else if (equationArray.length <= 2 && tempNumber === "") {
-    equationArray.push(tempNumber);
+    // equationArray.push(tempNumber);
     let mySolution = Math.sqrt(generateNumber(equationArray[0]));
+
     if (!Number.isInteger(mySolution)) {
       mySolution = mySolution.toFixed(10);
     }
+    
     equationArray = [];
     equationArray.push(mySolution);
     runningSolution = mySolution;
@@ -89,8 +100,72 @@ let squareRoot = function () {
     equationText.textContent = `${mySolution}`;
     tempNumber = "";
     console.log(equationArray);
+    console.log(tempNumber);
+  } else if (equationArray.length === 0 && tempNumber !== "") {
+    equationArray.push(tempNumber);
+    let mySolution = Math.sqrt(generateNumber(equationArray[0]));
+
+    if (!Number.isInteger(mySolution)) {
+      mySolution = mySolution.toFixed(10);
+    }
+
+    equationArray = [];
+    equationArray.push(mySolution);
+    runningSolution = mySolution;
+    solutionText.textContent = "";
+    equationText.textContent = `${mySolution}`;
+    tempNumber = "";
+    console.log(equationArray);
+  } else if (equationArray.length === 1 && tempNumber === ''){
+    let mySolution = Math.sqrt(generateNumber(equationArray[0]));
+
+    if (!Number.isInteger(mySolution)) {
+      mySolution = mySolution.toFixed(10);
+    }
+    
+    equationArray = [];
+    equationArray.push(mySolution);
+    runningSolution = mySolution;
+    solutionText.textContent = "";
+    equationText.textContent = `${mySolution}`;
+    tempNumber = "";
+    console.log(equationArray);
+    console.log(tempNumber);
   }
 };
+
+//functionality for squared button
+let squared = function(){
+  if(tempNumber === '' && equationArray.length === 0){
+    return;
+  } else if (tempNumber !== '' && equationArray.length === 0) {
+    let mySolution = generateNumber(tempNumber) ** 2;
+    equationArray.push(mySolution);
+    equationText.textContent = mySolution;
+    tempNumber = '';
+    console.log(equationArray);
+    console.log(tempNumber);
+  } else if (tempNumber === '' && equationArray.length > 0) {
+    let mySolution = generateNumber(equationArray[0]) ** 2;
+    equationArray = [];
+    equationArray.push(mySolution);
+    equationText.textContent = mySolution;
+    tempNumber = '';
+  } else if (tempNumber !== '' && equationArray.length <= 2) {
+    equationArray.push(generateNumber(tempNumber));
+    let mySolution = mathWork(
+      equationArray[0],
+      equationArray[1],
+      equationArray[2]
+    ) ** 2;
+    equationArray = [];
+    equationArray.push(mySolution);
+    equationText.textContent = mySolution;
+    tempNumber = '';
+    console.log(equationArray);
+    console.log(tempNumber);
+  }
+}
 
 //Functionality for opperand buttons
 let addInitialOperator = function () {
@@ -123,6 +198,7 @@ let addInitialOperator = function () {
     runningSolution = mySolution;
     solutionText.textContent = mySolution;
     equationText.textContent = `${mySolution} ${this.id} `;
+    console.log(equationArray);
   }
 
   if (tempNumber.length > 0 && equationArray.length === 0) {
@@ -169,6 +245,9 @@ clearButton.addEventListener("click", clearCalculator);
 
 //adding Event Listener for squre root button
 squareRootButton.addEventListener("click", squareRoot);
+
+//adding event listener for squared button
+squaredButton.addEventListener('click', squared);
 
 //adding operator button functionality
 operatorButtons.forEach((button) =>
