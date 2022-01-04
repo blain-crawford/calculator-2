@@ -3,6 +3,7 @@ const clearButton = document.querySelector('#clear')
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const equationText = document.querySelector('#running-equation');
+const equalsButton = document.querySelector('#=');
 const solutionText = document.querySelector('#solution');
 let runningSolution = '';
 let equationArray = [];
@@ -11,8 +12,6 @@ let tempNumber = '';
 
 //mathWork functionality
 const mathWork = function(opperand1, operator, opperand2){
-
-
   if(operator === '+') {
    return opperand1 + opperand2;
   } else if (operator === '-') {
@@ -24,7 +23,6 @@ const mathWork = function(opperand1, operator, opperand2){
   } else if(operator === '**'){
     return opperand1 ** 2;
   }
-
 }
 
 //functionality for number buttons
@@ -50,7 +48,7 @@ const clearCalculator = function() {
 };
 
 
-//Add operator functionality
+//Functionality for opperand buttons
 let addInitialOperator = function() {
   if(equationArray.length === 2 && tempNumber === ''){
     if(equationArray[1] === this.id){
@@ -86,15 +84,10 @@ let addInitialOperator = function() {
     equationText.textContent += ` ${this.id} `
   }
 
-  if(equationArray[0] === 'NaN'){
-    equationText.textContent = '';
-    solutionText.textContent = '';
-    equationText.textContent = 'ERROR PLEASE CLEAR'
-  }
-
-
   console.log(equationArray);
 }
+
+//functionality for equals button
 
 
 
