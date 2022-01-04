@@ -1,3 +1,8 @@
+@font-face {
+  font-family: digital;
+  src: url(../fonts/digital-7/digital-7.ttf);
+}
+
 html,
 body {
   margin: 0;
@@ -9,6 +14,8 @@ body {
   height: 50px;
 }
 
+
+
 #calculator-outline {
   margin: 0 auto;
   border: 1px solid blue;
@@ -16,6 +23,24 @@ body {
   width: 400px;
   height: 600px;
   padding-bottom: 40px;
+}
+
+#calculator-logo {
+  border: 1px solid black;
+  color: white; 
+  background: rgb(148,36,36);
+  background: linear-gradient(105deg, rgba(148,36,36,0.9766281512605042) 0%, rgba(17,1,0,0.9009978991596639) 100%);
+  width: 70%;
+  height: 10%;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#calculator-logo h1 {
+  position: relative;
+  bottom: 10px;
+  font-family: digital;
 }
 
 #calculator-logo {
@@ -29,7 +54,7 @@ body {
   border: 1px solid red;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -38,12 +63,14 @@ body {
   height: 30px;
   padding: 5px;
   text-align: end;
+  
 }
 
 #solution {
   position: relative;
   top: 15px;
-
+  font-family: digital;
+  font-size: 25px;
 }
 
 #screen-bottom{
@@ -51,7 +78,7 @@ body {
   height: 30px;
   padding: 10px;
   text-align: end;
-
+  font-family: digital;
 }
 
 #running-equation {
