@@ -7,14 +7,11 @@ html,
 body {
   margin: 0;
   padding: 0;
-
 }
 
-.spacer{
+.spacer {
   height: 50px;
 }
-
-
 
 #calculator-outline {
   margin: 0 auto;
@@ -27,9 +24,13 @@ body {
 
 #calculator-logo {
   border: 1px solid black;
-  color: white; 
-  background: rgb(148,36,36);
-  background: linear-gradient(105deg, rgba(148,36,36,0.9766281512605042) 0%, rgba(17,1,0,0.9009978991596639) 100%);
+  color: white;
+  background: rgb(148, 36, 36);
+  background: linear-gradient(
+    105deg,
+    rgba(148, 36, 36, 0.9766281512605042) 0%,
+    rgba(17, 1, 0, 0.9009978991596639) 100%
+  );
   width: 70%;
   height: 10%;
   margin-top: 20px;
@@ -63,7 +64,6 @@ body {
   height: 30px;
   padding: 5px;
   text-align: end;
-  
 }
 
 #solution {
@@ -73,7 +73,7 @@ body {
   font-size: 25px;
 }
 
-#screen-bottom{
+#screen-bottom {
   border: 1px solid green;
   height: 30px;
   padding: 10px;
@@ -86,7 +86,7 @@ body {
   font-size: 30px;
 }
 
-#button-container{
+#button-container {
   border: 1px solid palevioletred;
   margin-top: 30px;
   margin-left: auto;
@@ -98,7 +98,7 @@ body {
   padding: 10px;
 }
 
-.button-column{
+.button-column {
   height: 100%;
   width: 25%;
   display: flex;
@@ -106,7 +106,7 @@ body {
   gap: 2px;
 }
 
-.number-button{
+.number-button {
   width: 100%;
   height: 20%;
   border: 1px solid green;
@@ -115,7 +115,7 @@ body {
   align-items: center;
 }
 
-.operator-button{
+.operator-button {
   width: 100%;
   height: 20%;
   border: 1px solid green;
@@ -124,28 +124,48 @@ body {
   align-items: center;
 }
 
-.clear-equals-buttons{
-    width: 100%;
-    height: 20%;
-    border: 1px solid green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.square-root-button {
+  width: 100%;
+  height: 20%;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button-label{
+.squared-button {
+  width: 100%;
+  height: 20%;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-equals-buttons {
+  width: 100%;
+  height: 20%;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-label {
   margin-bottom: 2px;
   margin-right: 2px;
   font-size: 30px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.addition-button{
+.addition-button {
   height: 41%;
   border: 1px solid green;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
