@@ -70,7 +70,7 @@ const numberInput = function () {
     equationArray = [];
     equationText.textContent = '';
   }
-  
+
   if (
     this.id === '.' &&
     tempNumber.includes('.') &&
@@ -83,7 +83,9 @@ const numberInput = function () {
   }
 };
 
-//Adding functionality for clear button
+/**
+ * Adding functionality for clear button
+ */
 const clearCalculator = function () {
   if (this.id === 'clear') {
     runningSolution = '';
@@ -94,7 +96,11 @@ const clearCalculator = function () {
   }
 };
 
-//functionality for square root button
+/**
+ * functionality for square root button
+ *   uses generateNumber function
+ *   also uses mathWork function
+ */
 let squareRoot = function () {
   if (tempNumber === '' && equationArray.length === 0) {
     return;
@@ -110,7 +116,6 @@ let squareRoot = function () {
     equationText.textContent = `${mySolution}`;
     tempNumber = '';
   } else if (equationArray.length <= 2 && tempNumber === '') {
-    // equationArray.push(tempNumber);  //CAN DELETE???\\
     let mySolution = Math.sqrt(generateNumber(equationArray[0]));
     if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
@@ -148,7 +153,11 @@ let squareRoot = function () {
   }
 };
 
-//functionality for squared button
+/**
+ * functionality for squared button
+ *  uses generateNumber function
+ *  also uses mathWork function
+ */
 let squared = function () {
   if (tempNumber === '' && equationArray.length === 0) {
     return;
@@ -174,7 +183,12 @@ let squared = function () {
   }
 };
 
-//Functionality for opperand buttons
+/**
+ * Functionality for opperand buttons
+ *  uses generateNumber function
+ *  also uses mathWork function
+ *  also uses roundFloat function
+ */
 let addInitialOperator = function () {
 
   //replaces opperand in equation if one is entered twice
@@ -188,6 +202,7 @@ let addInitialOperator = function () {
     }
     return;
   }
+  
   if (equationArray.length > 1) {
     equationArray.push(generateNumber(tempNumber));
     tempNumber = '';
@@ -218,8 +233,15 @@ let addInitialOperator = function () {
   }
 };
 
-//functionality for equals button
+/**
+ * functionality for equals button
+ *  uses generateNumber function  
+ *  also uses mathWork function
+ *  also uses roundFloat function
+ */
 let equals = function () {
+  
+  //if no equation has been started this stops the equals button from functioning
   if (equationArray.length <= 1) {
     return;
   }

@@ -9,6 +9,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-size: cover;
+  background-image: url(../images/80s-bg.gif);
 }
 
 .spacer {
@@ -17,7 +19,7 @@ body {
 /* Full outline of calculator */
 #calculator-outline {
   margin: 0 auto;
-  border: 10px solid black;
+  border: 10px solid rgb(0, 0, 0);
   border-radius: 10%;
   background-color: #676767;
   opacity: 1;
@@ -29,6 +31,9 @@ body {
     #676767 0,
     #676767 50%
   );
+  background-position: center;
+  -webkit-box-shadow: 5px 5px 15px 5px #FF8080, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 41px 31px rgba(175,31,255,0.52); 
+  box-shadow: 5px 5px 15px 5px #FF8080, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 41px 31px rgba(175,31,255,0.52);
   text-align: center;
   width: 400px;
   height: 700px;
