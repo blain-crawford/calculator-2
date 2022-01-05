@@ -13,7 +13,7 @@ let tempNumber = "";
 
 //change strings to float or integer
 let generateNumber = function (string) {
-  if (!Number.isInteger(parseInt(string))) {
+  if (string - Math.floor(string) !== 0) {
     return parseFloat(string);
   } else {
     return parseInt(string);
@@ -35,13 +35,14 @@ const mathWork = function (opperand1, operator, opperand2) {
 
 //functionality for number buttons
 const numberInput = function () {
-  if(equationArray.length === 1 && tempNumber === ''){
+  //starts new equation after the equals button is pressed
+  if(
+    equationArray.length === 1 && 
+    tempNumber === ''
+  ){
     equationArray = [];
     equationText.textContent = '';
-    console.log(tempNumber);
-    console.log(equationArray);
   }
-  
   if (
     this.id === "." &&
     tempNumber.includes(".") &&
@@ -51,7 +52,6 @@ const numberInput = function () {
   } else {
     tempNumber += this.id;
     equationText.textContent += this.id;
-    console.log(tempNumber);
   }
 
 };
@@ -84,15 +84,13 @@ let squareRoot = function () {
     solutionText.textContent = "";
     equationText.textContent = `${mySolution}`;
     tempNumber = "";
-    console.log(equationArray);
   } else if (equationArray.length <= 2 && tempNumber === "") {
-    // equationArray.push(tempNumber);
+    // equationArray.push(tempNumber);  //CAN DELETE???\\
     let mySolution = Math.sqrt(generateNumber(equationArray[0]));
-
-    if (!Number.isInteger(mySolution)) {
+    if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
-    
+
     equationArray = [];
     equationArray.push(mySolution);
     runningSolution = mySolution;
@@ -105,7 +103,7 @@ let squareRoot = function () {
     equationArray.push(tempNumber);
     let mySolution = Math.sqrt(generateNumber(equationArray[0]));
 
-    if (!Number.isInteger(mySolution)) {
+    if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
 
@@ -119,7 +117,7 @@ let squareRoot = function () {
   } else if (equationArray.length === 1 && tempNumber === ''){
     let mySolution = Math.sqrt(generateNumber(equationArray[0]));
 
-    if (!Number.isInteger(mySolution)) {
+    if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
     
@@ -189,7 +187,7 @@ let addInitialOperator = function () {
       equationArray[1],
       equationArray[2]
     );
-    if (!Number.isInteger(mySolution)) {
+    if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
     equationArray = [];
@@ -203,7 +201,9 @@ let addInitialOperator = function () {
 
   if (tempNumber.length > 0 && equationArray.length === 0) {
     equationArray.push(generateNumber(tempNumber));
+    console.log(tempNumber);
     equationArray.push(this.id);
+    console.log(equationArray);
     tempNumber = "";
     equationText.textContent += ` ${this.id} `;
   }
