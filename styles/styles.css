@@ -11,6 +11,7 @@ body {
   padding: 0;
   background-size: cover;
   background-image: url(../images/80s-bg.gif);
+  cursor: url('../images/cursor.gif'), pointer;
 }
 
 .spacer {
@@ -127,7 +128,6 @@ body {
   display: flex;
   gap: 5px;
   padding: 10px;
-  cursor: pointer;
 }
 
 .button-column {
