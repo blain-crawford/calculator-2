@@ -15,11 +15,31 @@ body {
 
 #calculator-outline {
   margin: 0 auto;
-  border: 1px solid blue;
+  border: 10px solid black;
+  border-radius: 10%;
+  background-color: #676767;
+  opacity: 1;
+  background-size: 4px 4px;
+  background-image: repeating-linear-gradient(45deg, #515151 0, #515151 0.4px, #676767 0, #676767 50%);
   text-align: center;
   width: 400px;
-  height: 600px;
+  height: 700px;
   padding-bottom: 40px;
+}
+
+#calculator-logo-outline-dark-grey {
+  border: 5px solid black;
+  border-radius: 5%;
+  color: white;
+  background: rgb(42, 41, 41);
+  width: 70%;
+  height: 10%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 #calculator-logo {
@@ -28,31 +48,22 @@ body {
   background: rgb(148, 36, 36);
   background: linear-gradient(
     105deg,
-    rgba(148, 36, 36, 0.9766281512605042) 0%,
-    rgba(17, 1, 0, 0.9009978991596639) 100%
+    rgba(0, 0, 0, 0.977) 0%,
+    rgba(105, 18, 12, 0.901) 100%
   );
-  width: 70%;
-  height: 10%;
-  margin-top: 20px;
+  width: 90%;
+  height: 80%;
   margin-right: auto;
   margin-left: auto;
 }
 
-#calculator-logo h1 {
-  position: relative;
-  bottom: 10px;
-  font-family: digital;
-}
-
-#calculator-logo {
-  margin-bottom: 0px;
-  padding: 0px;
-}
 
 #screen {
   width: 75%;
   height: auto;
-  border: 1px solid red;
+  border: 10px solid rgb(0, 0, 0);
+  border-radius: 5%;
+  background-color: rgb(236, 236, 236);
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -60,7 +71,6 @@ body {
 }
 
 #screen-top {
-  border: 1px solid green;
   height: 30px;
   padding: 5px;
   text-align: end;
@@ -70,11 +80,13 @@ body {
   position: relative;
   top: 15px;
   font-family: digital;
-  font-size: 25px;
+  font-size: 15px;
+  color: black;
+  opacity: .8;
 }
 
 #screen-bottom {
-  border: 1px solid green;
+  border-top: 2px solid black;
   height: 30px;
   padding: 10px;
   text-align: end;
@@ -87,7 +99,9 @@ body {
 }
 
 #button-container {
-  border: 1px solid palevioletred;
+  border: 5px solid white;
+  border-radius: 2%;
+  background-color: black ;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -103,53 +117,111 @@ body {
   width: 25%;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 5px;
 }
 
 .number-button {
   width: 100%;
   height: 20%;
-  border: 1px solid green;
+  border: 1px solid black;
+  border-radius: 100%;
+  background-color: gray;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.number-button:active {
+  background-color: rgb(82, 81, 81)!important;
+  width: 95%;
+  height: 19%;
 }
 
 .operator-button {
   width: 100%;
   height: 20%;
-  border: 1px solid green;
+  border: 1px solid black;
+  border-radius: 100%;
+  background-color: gray;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.operator-button:active {
+  background-color: rgb(82, 81, 81)!important;
+  width: 95%;
+  height: 19%;
 }
 
 .square-root-button {
   width: 100%;
   height: 20%;
-  border: 1px solid green;
+  border: 1px solid black;
+  border-radius: 100%;
+  background-color: rgb(119, 180, 236);
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.square-root-button:active {
+  background-color: rgb(67, 144, 216);
+  width: 95%;
+  height: 19%;
 }
 
 .squared-button {
   width: 100%;
   height: 20%;
-  border: 1px solid green;
+  border: 1px solid black;
+  background-color: rgb(119, 180, 236);
+  color: white;
+  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.squared-button:active {
+  background-color: rgb(67, 144, 216);
+  width: 95%;
+  height: 19%;
+}
+
+#clear{
+  background-color: rgb(255, 0, 0);
+  border-radius: 100%;
+  color: white;
+}
+
+#clear:active {
+  background-color: rgb(189, 19, 19) !important;
+  width: 95%;
+  height: 19%;
+}
+
+
 .clear-equals-buttons {
   width: 100%;
   height: 20%;
-  border: 1px solid green;
+  border: 1px solid black;
+  border-radius: 100%;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.clear-equals-buttons:active {
+  background-color: rgb(82, 81, 81)!important;
+  width: 95%;
+  height: 19%;
+}
+
 
 .button-label {
   margin-bottom: 2px;
@@ -160,12 +232,21 @@ body {
 }
 
 .addition-button {
-  height: 41%;
-  border: 1px solid green;
+  height: 42%;
+  border: px solid black;
+  border-radius: 100%;
+  background-color: gray;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 40px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.addition-button:active {
+  background-color: rgb(82, 81, 81)!important;
+  width: 95%;
+  height: 40%;
 }
