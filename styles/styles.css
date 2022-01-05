@@ -1,3 +1,5 @@
+@import url(./reset.css);
+
 @font-face {
   font-family: digital;
   src: url(../fonts/digital-7/digital-7.ttf);
@@ -12,7 +14,7 @@ body {
 .spacer {
   height: 50px;
 }
-
+/* Full outline of calculator */
 #calculator-outline {
   margin: 0 auto;
   border: 10px solid black;
@@ -20,12 +22,20 @@ body {
   background-color: #676767;
   opacity: 1;
   background-size: 4px 4px;
-  background-image: repeating-linear-gradient(45deg, #515151 0, #515151 0.4px, #676767 0, #676767 50%);
+  background-image: repeating-linear-gradient(
+    45deg,
+    #515151 0,
+    #515151 0.4px,
+    #676767 0,
+    #676767 50%
+  );
   text-align: center;
   width: 400px;
   height: 700px;
   padding-bottom: 40px;
 }
+
+/* Top Red Logo rectangle */
 
 #calculator-logo-outline-dark-grey {
   border: 5px solid black;
@@ -57,7 +67,7 @@ body {
   margin-left: auto;
 }
 
-
+/* Screen where equations and solutions are shown */
 #screen {
   width: 75%;
   height: auto;
@@ -82,7 +92,7 @@ body {
   font-family: digital;
   font-size: 15px;
   color: black;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 #screen-bottom {
@@ -98,10 +108,12 @@ body {
   font-size: 30px;
 }
 
+/* interactive buttons */
+
 #button-container {
   border: 5px solid white;
   border-radius: 2%;
-  background-color: black ;
+  background-color: black;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -110,6 +122,7 @@ body {
   display: flex;
   gap: 5px;
   padding: 10px;
+  cursor: pointer;
 }
 
 .button-column {
@@ -133,7 +146,7 @@ body {
 }
 
 .number-button:active {
-  background-color: rgb(82, 81, 81)!important;
+  background-color: rgb(82, 81, 81) !important;
   width: 95%;
   height: 19%;
 }
@@ -151,7 +164,7 @@ body {
 }
 
 .operator-button:active {
-  background-color: rgb(82, 81, 81)!important;
+  background-color: rgb(82, 81, 81) !important;
   width: 95%;
   height: 19%;
 }
@@ -192,7 +205,7 @@ body {
   height: 19%;
 }
 
-#clear{
+#clear {
   background-color: rgb(255, 0, 0);
   border-radius: 100%;
   color: white;
@@ -203,7 +216,6 @@ body {
   width: 95%;
   height: 19%;
 }
-
 
 .clear-equals-buttons {
   width: 100%;
@@ -217,11 +229,10 @@ body {
 }
 
 .clear-equals-buttons:active {
-  background-color: rgb(82, 81, 81)!important;
+  background-color: rgb(82, 81, 81) !important;
   width: 95%;
   height: 19%;
 }
-
 
 .button-label {
   margin-bottom: 2px;
@@ -246,7 +257,7 @@ body {
 }
 
 .addition-button:active {
-  background-color: rgb(82, 81, 81)!important;
+  background-color: rgb(82, 81, 81) !important;
   width: 95%;
   height: 40%;
 }
