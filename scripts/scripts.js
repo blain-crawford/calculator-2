@@ -108,7 +108,7 @@ let squareRoot = function () {
     // equationArray.push(tempNumber);  //CAN DELETE???\\
     let mySolution = Math.sqrt(generateNumber(equationArray[0]));
     if (mySolution - Math.floor(mySolution) !== 0) {
-      mySolution = roundFloat(mySolution);
+      mySolution = mySolution.toFixed(10);
     }
     equationArray = [];
     equationArray.push(mySolution);
@@ -198,7 +198,7 @@ let addInitialOperator = function () {
       equationArray[2]
     );
     if (mySolution - Math.floor(mySolution) !== 0) {
-      mySolution = mySolution.toFixed(10);
+      mySolution = roundFloat(mySolution);
     }
     equationArray = [];
     equationArray.push(mySolution);
@@ -235,7 +235,7 @@ let equals = function () {
     equationArray[2]
   );
   if (mySolution - Math.floor(mySolution) !== 0 && mySolution.toString().length > 10) {
-    mySolution = mySolution.toFixed(10);
+    mySolution = roundFloat(mySolution);
   }
   equationText.textContent = mySolution;
   equationArray = [];
