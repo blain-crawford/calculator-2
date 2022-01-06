@@ -14,20 +14,24 @@ let equationArray = [];
 let tempNumber = "";
 
 /**
- * change strings to float or integer
+ * creates a number out of a string
+ * @param {*} tempNumberString this is fed by tempNumber throughout
+ * @returns either a number or a string
  */
-let generateNumber = function (string) {
-  if (string - Math.floor(string) !== 0) {
-    return parseFloat(string);
+const generateIntegerFromTempNumber = function (tempNumberString) {
+  if (tempNumberString - Math.floor(tempNumberString) !== 0) {
+    return parseFloat(tempNumberString);
   } else {
-    return parseInt(string);
+    return parseInt(tempNumberString);
   }
 };
 
 /**
  * Make Sure floats never get past a certain length
+ * @param {*} number number coming in is either integer or float
+ * @returns integer or float
  */
-let roundFloat = function (number) {
+const fixFloatToMaxTen = function (number) {
   let numString = number.toString();
   numString = numString.substring(numString.indexOf("."), numString.length - 0);
   if (number - Math.floor(number) !== 0 && numString.length > 10) {
@@ -46,9 +50,13 @@ let roundFloat = function (number) {
 };
 
 /**
- * mathWork functionality
+ * handleMathEquations functionality
+ * @param {*} opperand1 equationArray[0]
+ * @param {*} operator equationArray[1]
+ * @param {*} opperand2 equationArray[2]
+ * @returns number based on values in equationArray
  */
-const mathWork = function (opperand1, operator, opperand2) {
+const handleMathEquations = function (opperand1, operator, opperand2) {
   if (operator === "+") {
     return opperand1 + opperand2;
   } else if (operator === "-") {
@@ -61,7 +69,20 @@ const mathWork = function (opperand1, operator, opperand2) {
 };
 
 /**
+ * logic for handling end of squareRoot function
+ */
+const handleSquareRootOutput = function(numberToSquare){
+  equationArray = [];
+  equationArray.push(numberToSquare);
+  runningSolution = numberToSquare;
+  solutionText.textContent = "";
+  equationText.textContent = `${numberToSquare}`;
+  tempNumber = "";
+};
+
+/**
  * functionality for number buttons
+ * @returns tempNumber with added value
  */
 const numberInput = function () {
   //starts new equation after the equals button is pressed
@@ -97,84 +118,64 @@ const clearCalculator = function () {
 
 /**
  * functionality for square root button
- *   uses generateNumber function
- *   also uses mathWork function
+ *   uses generateIntegerFromTempNumber function
+ *   also uses handleMathEquations function
  */
-let squareRoot = function () {
+const squareRoot = function () {
   if (tempNumber === "" && equationArray.length === 0) {
     return;
   } else if (equationArray.length === 2 && tempNumber !== "") {
-    equationArray.push(generateNumber(tempNumber));
+    equationArray.push(generateIntegerFromTempNumber(tempNumber));
     let mySolution = Math.sqrt(
-      mathWork(equationArray[0], equationArray[1], equationArray[2])
+      handleMathEquations(equationArray[0], equationArray[1], equationArray[2])
     );
-    equationArray = [];
-    equationArray.push(mySolution);
-    runningSolution = mySolution;
-    solutionText.textContent = "";
-    equationText.textContent = `${mySolution}`;
-    tempNumber = "";
+    handleSquareRootOutput(mySolution);
   } else if (equationArray.length <= 2 && tempNumber === "") {
-    let mySolution = Math.sqrt(generateNumber(equationArray[0]));
+    let mySolution = Math.sqrt(generateIntegerFromTempNumber(equationArray[0]));
     if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
-    equationArray = [];
-    equationArray.push(mySolution);
-    runningSolution = mySolution;
-    solutionText.textContent = "";
-    equationText.textContent = `${mySolution}`;
-    tempNumber = "";
+    handleSquareRootOutput(mySolution);
   } else if (equationArray.length === 0 && tempNumber !== "") {
     equationArray.push(tempNumber);
-    let mySolution = Math.sqrt(generateNumber(equationArray[0]));
+    let mySolution = Math.sqrt(generateIntegerFromTempNumber(equationArray[0]));
     if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
-    equationArray = [];
-    equationArray.push(mySolution);
-    runningSolution = mySolution;
-    solutionText.textContent = "";
-    equationText.textContent = `${mySolution}`;
-    tempNumber = "";
+    handleSquareRootOutput(mySolution);
   } else if (equationArray.length === 1 && tempNumber === "") {
-    let mySolution = Math.sqrt(generateNumber(equationArray[0]));
+    let mySolution = Math.sqrt(generateIntegerFromTempNumber(equationArray[0]));
 
     if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
-    equationArray = [];
-    equationArray.push(mySolution);
-    runningSolution = mySolution;
-    solutionText.textContent = "";
-    equationText.textContent = `${mySolution}`;
-    tempNumber = "";
+    handleSquareRootOutput(mySolution);
   }
 };
 
 /**
  * functionality for squared button
- *  uses generateNumber function
- *  also uses mathWork function
+ *  uses generateIntegerFromTempNumber function
+ *  also uses handleMathEquations function
  */
-let squared = function () {
+const handleSquaringValue = function () {
   if (tempNumber === "" && equationArray.length === 0) {
     return;
   } else if (tempNumber !== "" && equationArray.length === 0) {
-    let mySolution = generateNumber(tempNumber) ** 2;
+    let mySolution = generateIntegerFromTempNumber(tempNumber) ** 2;
     equationArray.push(mySolution);
     equationText.textContent = mySolution;
     tempNumber = "";
   } else if (tempNumber === "" && equationArray.length > 0) {
-    let mySolution = generateNumber(equationArray[0]) ** 2;
+    let mySolution = generateIntegerFromTempNumber(equationArray[0]) ** 2;
     equationArray = [];
     equationArray.push(mySolution);
     equationText.textContent = mySolution;
     tempNumber = "";
   } else if (tempNumber !== "" && equationArray.length <= 2) {
-    equationArray.push(generateNumber(tempNumber));
+    equationArray.push(generateIntegerFromTempNumber(tempNumber));
     let mySolution =
-      mathWork(equationArray[0], equationArray[1], equationArray[2]) ** 2;
+      handleMathEquations(equationArray[0], equationArray[1], equationArray[2]) ** 2;
     equationArray = [];
     equationArray.push(mySolution);
     equationText.textContent = mySolution;
@@ -184,11 +185,11 @@ let squared = function () {
 
 /**
  * Functionality for opperand buttons
- *  uses generateNumber function
- *  also uses mathWork function
- *  also uses roundFloat function
+ *  uses generateIntegerFromTempNumber function
+ *  also uses handleMathEquations function
+ *  also uses fixFloatToMaxTen function
  */
-let addInitialOperator = function () {
+const addInitialOperator = function () {
   //replaces opperand in equation if one is entered twice
   if (equationArray.length === 2 && tempNumber === "") {
     if (equationArray[1] === this.id) {
@@ -202,15 +203,15 @@ let addInitialOperator = function () {
   }
 
   if (equationArray.length > 1) {
-    equationArray.push(generateNumber(tempNumber));
+    equationArray.push(generateIntegerFromTempNumber(tempNumber));
     tempNumber = "";
-    let mySolution = mathWork(
+    let mySolution = handleMathEquations(
       equationArray[0],
       equationArray[1],
       equationArray[2]
     );
     if (mySolution - Math.floor(mySolution) !== 0) {
-      mySolution = roundFloat(mySolution);
+      mySolution = fixFloatToMaxTen(mySolution);
     }
     equationArray = [];
     equationArray.push(mySolution);
@@ -220,7 +221,7 @@ let addInitialOperator = function () {
     equationText.textContent = `${mySolution} ${this.id} `;
   }
   if (tempNumber.length > 0 && equationArray.length === 0) {
-    equationArray.push(generateNumber(tempNumber));
+    equationArray.push(generateIntegerFromTempNumber(tempNumber));
     equationArray.push(this.id);
     tempNumber = "";
     equationText.textContent += ` ${this.id} `;
@@ -233,20 +234,20 @@ let addInitialOperator = function () {
 
 /**
  * functionality for equals button
- *  uses generateNumber function
- *  also uses mathWork function
- *  also uses roundFloat function
+ *  uses generateIntegerFromTempNumber function
+ *  also uses handleMathEquations function
+ *  also uses fixFloatToMaxTen function
  */
-let equals = function () {
+const equals = function () {
   //if no equation has been started this stops the equals button from functioning
   if (equationArray.length <= 1) {
     return;
   }
 
-  equationArray.push(generateNumber(tempNumber));
+  equationArray.push(generateIntegerFromTempNumber(tempNumber));
   tempNumber = "";
   solutionText.textContent = "";
-  let mySolution = mathWork(
+  let mySolution = handleMathEquations(
     equationArray[0],
     equationArray[1],
     equationArray[2]
@@ -255,7 +256,7 @@ let equals = function () {
     mySolution - Math.floor(mySolution) !== 0 &&
     mySolution.toString().length > 10
   ) {
-    mySolution = roundFloat(mySolution);
+    mySolution = fixFloatToMaxTen(mySolution);
   }
   equationText.textContent = mySolution;
   equationArray = [];
@@ -271,7 +272,7 @@ clearButton.addEventListener("click", clearCalculator);
 
 squareRootButton.addEventListener("click", squareRoot);
 
-squaredButton.addEventListener("click", squared);
+squaredButton.addEventListener("click", handleSquaringValue);
 
 operatorButtons.forEach((button) =>
   button.addEventListener("click", addInitialOperator)
