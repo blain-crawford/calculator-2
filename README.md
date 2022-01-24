@@ -13,4 +13,6 @@ Created as a way to store and keep track of a list of books, information about t
   -  Use LiveServer extensnion in VScode to run on localhost
   -  Click on plus button to add book
   - Vibe with the incredible 80's aesthetic 
-  <video>
+  <video src="./images/calculator-vibe.mov" style=" width: 400px; border-radius: 10%;" autoplay loop></video>
+  - move cursor to any button and click to do calculations
+  <video src="./images/calculations.mov" style=" width: 400px; border-radius: 10%;" autoplay loop></video>
