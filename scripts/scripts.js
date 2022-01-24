@@ -1,17 +1,17 @@
 /**
  * DOM element and Global Variable creation
  */
-const clearButton = document.querySelector("#clear");
-const numberButtons = document.querySelectorAll(".number-button");
-const operatorButtons = document.querySelectorAll(".operator-button");
-const equationText = document.querySelector("#running-equation");
-const equalsButton = document.getElementById("=");
-const solutionText = document.querySelector("#solution");
-const squareRootButton = document.getElementById("√");
-const squaredButton = document.getElementById("**");
-let runningSolution = "";
+const clearButton = document.querySelector('#clear');
+const numberButtons = document.querySelectorAll('.number-button');
+const operatorButtons = document.querySelectorAll('.operator-button');
+const equationText = document.querySelector('#running-equation');
+const equalsButton = document.getElementById('=');
+const solutionText = document.querySelector('#solution');
+const squareRootButton = document.getElementById('√');
+const squaredButton = document.getElementById('**');
+let runningSolution = '';
 let equationArray = [];
-let tempNumber = "";
+let tempNumber = '';
 
 /**
  * creates a number out of a string
@@ -33,7 +33,7 @@ const generateIntegerFromTempNumber = function (tempNumberString) {
  */
 const fixFloatToMaxTen = function (number) {
   let numString = number.toString();
-  numString = numString.substring(numString.indexOf("."), numString.length - 0);
+  numString = numString.substring(numString.indexOf('.'), numString.length - 0);
   if (number - Math.floor(number) !== 0 && numString.length > 10) {
     number = number.toFixed(10);
     number = parseFloat(number);
@@ -57,13 +57,13 @@ const fixFloatToMaxTen = function (number) {
  * @returns number based on values in equationArray
  */
 const handleMathEquations = function (opperand1, operator, opperand2) {
-  if (operator === "+") {
+  if (operator === '+') {
     return opperand1 + opperand2;
-  } else if (operator === "-") {
+  } else if (operator === '-') {
     return opperand1 - opperand2;
-  } else if (operator === "*") {
+  } else if (operator === '*') {
     return opperand1 * opperand2;
-  } else if (operator === "/") {
+  } else if (operator === '/') {
     return opperand1 / opperand2;
   }
 };
@@ -71,13 +71,13 @@ const handleMathEquations = function (opperand1, operator, opperand2) {
 /**
  * logic for handling end of squareRoot function
  */
-const handleSquareRootOutput = function(numberToSquare){
+const handleSquareRootOutput = function (numberToSquare) {
   equationArray = [];
   equationArray.push(numberToSquare);
   runningSolution = numberToSquare;
-  solutionText.textContent = "";
+  solutionText.textContent = '';
   equationText.textContent = `${numberToSquare}`;
-  tempNumber = "";
+  tempNumber = '';
 };
 
 /**
@@ -86,15 +86,15 @@ const handleSquareRootOutput = function(numberToSquare){
  */
 const numberInput = function () {
   //starts new equation after the equals button is pressed
-  if (equationArray.length === 1 && tempNumber === "") {
+  if (equationArray.length === 1 && tempNumber === '') {
     equationArray = [];
-    equationText.textContent = "";
+    equationText.textContent = '';
   }
 
   if (
-    this.id === "." &&
-    tempNumber.includes(".") &&
-    equationText.textContent.includes(".")
+    this.id === '.' &&
+    tempNumber.includes('.') &&
+    equationText.textContent.includes('.')
   ) {
     return;
   } else {
@@ -107,12 +107,12 @@ const numberInput = function () {
  * Adding functionality for clear button
  */
 const clearCalculator = function () {
-  if (this.id === "clear") {
-    runningSolution = "";
+  if (this.id === 'clear') {
+    runningSolution = '';
     equationArray = [];
-    tempNumber = "";
-    equationText.textContent = "";
-    solutionText.textContent = "";
+    tempNumber = '';
+    equationText.textContent = '';
+    solutionText.textContent = '';
   }
 };
 
@@ -122,28 +122,28 @@ const clearCalculator = function () {
  *   also uses handleMathEquations function
  */
 const squareRoot = function () {
-  if (tempNumber === "" && equationArray.length === 0) {
+  if (tempNumber === '' && equationArray.length === 0) {
     return;
-  } else if (equationArray.length === 2 && tempNumber !== "") {
+  } else if (equationArray.length === 2 && tempNumber !== '') {
     equationArray.push(generateIntegerFromTempNumber(tempNumber));
     let mySolution = Math.sqrt(
       handleMathEquations(equationArray[0], equationArray[1], equationArray[2])
     );
     handleSquareRootOutput(mySolution);
-  } else if (equationArray.length <= 2 && tempNumber === "") {
+  } else if (equationArray.length <= 2 && tempNumber === '') {
     let mySolution = Math.sqrt(generateIntegerFromTempNumber(equationArray[0]));
     if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
     handleSquareRootOutput(mySolution);
-  } else if (equationArray.length === 0 && tempNumber !== "") {
+  } else if (equationArray.length === 0 && tempNumber !== '') {
     equationArray.push(tempNumber);
     let mySolution = Math.sqrt(generateIntegerFromTempNumber(equationArray[0]));
     if (mySolution - Math.floor(mySolution) !== 0) {
       mySolution = mySolution.toFixed(10);
     }
     handleSquareRootOutput(mySolution);
-  } else if (equationArray.length === 1 && tempNumber === "") {
+  } else if (equationArray.length === 1 && tempNumber === '') {
     let mySolution = Math.sqrt(generateIntegerFromTempNumber(equationArray[0]));
 
     if (mySolution - Math.floor(mySolution) !== 0) {
@@ -159,27 +159,31 @@ const squareRoot = function () {
  *  also uses handleMathEquations function
  */
 const handleSquaringValue = function () {
-  if (tempNumber === "" && equationArray.length === 0) {
+  if (tempNumber === '' && equationArray.length === 0) {
     return;
-  } else if (tempNumber !== "" && equationArray.length === 0) {
+  } else if (tempNumber !== '' && equationArray.length === 0) {
     let mySolution = generateIntegerFromTempNumber(tempNumber) ** 2;
     equationArray.push(mySolution);
     equationText.textContent = mySolution;
-    tempNumber = "";
-  } else if (tempNumber === "" && equationArray.length > 0) {
+    tempNumber = '';
+  } else if (tempNumber === '' && equationArray.length > 0) {
     let mySolution = generateIntegerFromTempNumber(equationArray[0]) ** 2;
     equationArray = [];
     equationArray.push(mySolution);
     equationText.textContent = mySolution;
-    tempNumber = "";
-  } else if (tempNumber !== "" && equationArray.length <= 2) {
+    tempNumber = '';
+  } else if (tempNumber !== '' && equationArray.length <= 2) {
     equationArray.push(generateIntegerFromTempNumber(tempNumber));
     let mySolution =
-      handleMathEquations(equationArray[0], equationArray[1], equationArray[2]) ** 2;
+      handleMathEquations(
+        equationArray[0],
+        equationArray[1],
+        equationArray[2]
+      ) ** 2;
     equationArray = [];
     equationArray.push(mySolution);
     equationText.textContent = mySolution;
-    tempNumber = "";
+    tempNumber = '';
   }
 };
 
@@ -191,7 +195,7 @@ const handleSquaringValue = function () {
  */
 const addInitialOperator = function () {
   //replaces opperand in equation if one is entered twice
-  if (equationArray.length === 2 && tempNumber === "") {
+  if (equationArray.length === 2 && tempNumber === '') {
     if (equationArray[1] === this.id) {
       return;
     } else {
@@ -204,7 +208,7 @@ const addInitialOperator = function () {
 
   if (equationArray.length > 1) {
     equationArray.push(generateIntegerFromTempNumber(tempNumber));
-    tempNumber = "";
+    tempNumber = '';
     let mySolution = handleMathEquations(
       equationArray[0],
       equationArray[1],
@@ -223,7 +227,7 @@ const addInitialOperator = function () {
   if (tempNumber.length > 0 && equationArray.length === 0) {
     equationArray.push(generateIntegerFromTempNumber(tempNumber));
     equationArray.push(this.id);
-    tempNumber = "";
+    tempNumber = '';
     equationText.textContent += ` ${this.id} `;
   }
   if (tempNumber.length === 0 && equationArray.length === 1) {
@@ -245,8 +249,8 @@ const equals = function () {
   }
 
   equationArray.push(generateIntegerFromTempNumber(tempNumber));
-  tempNumber = "";
-  solutionText.textContent = "";
+  tempNumber = '';
+  solutionText.textContent = '';
   let mySolution = handleMathEquations(
     equationArray[0],
     equationArray[1],
@@ -265,17 +269,19 @@ const equals = function () {
 
 //adding functionality to buttons
 numberButtons.forEach((button) =>
-  button.addEventListener("click", numberInput)
+  button.addEventListener('click', numberInput)
 );
 
-clearButton.addEventListener("click", clearCalculator);
+clearButton.addEventListener('click', clearCalculator);
 
-squareRootButton.addEventListener("click", squareRoot);
+squareRootButton.addEventListener('click', squareRoot);
 
-squaredButton.addEventListener("click", handleSquaringValue);
+squaredButton.addEventListener('click', handleSquaringValue);
 
 operatorButtons.forEach((button) =>
-  button.addEventListener("click", addInitialOperator)
+  button.addEventListener('click', addInitialOperator)
 );
 
-equalsButton.addEventListener("click", equals);
+equalsButton.addEventListener('click', equals);
+
+
