@@ -2,7 +2,7 @@
 ## Creator
   -  Blain Crawford
 
-Created as a way to store and keep track of a list of books, information about them, and whether or not they have been read by the user.
+Created as a way to do basic arithmetic
 
 ## Technologies Used
   -  JavaScript
