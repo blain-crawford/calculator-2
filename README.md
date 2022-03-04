@@ -4,6 +4,10 @@
 
 Created as a way to do basic arithmetic
 
+## Deployed at:
+blain-crawford.github.io/calculator-2/
+<br><br><br>
+
 ## Technologies Used
   -  JavaScript
   -  CSS
